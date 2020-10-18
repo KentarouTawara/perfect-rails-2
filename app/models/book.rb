@@ -1,6 +1,6 @@
 class Book < ApplicationRecord
   scope :costly, -> { where("price > ?", 3000) }
-  scope :written_about, ->(theme) { where("name like ?","%#{theme}%") } 
+  scope :written_about, ->(theme) { where("name like ?","%#{theme}%") }
 
   belongs_to :publisher
   has_many :book_authors
@@ -31,7 +31,7 @@ class Book < ApplicationRecord
     Rails.logger.warn "Book with high price is deleted: #{self.attributes}"
     Rails.logger.warn "Please check!!"
   end
-  
+
   def high_price?
     price >= 5000
   end
@@ -41,6 +41,5 @@ class Book < ApplicationRecord
     now_on_sale: 1, # 発売中
     end_of_print: 2, # 販売終了
   }
-
 end
 
